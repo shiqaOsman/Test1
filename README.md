@@ -1,54 +1,102 @@
-<!DOCTYPE html>
 <html>
-<title>Sort a HTML List Alphabetically</title>
-<body>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+* {box-sizing: border-box;}
 
-<p>Click the button to sort the list alphabetically:</p>
-<button onclick="sortList()">Sort</button>
+body {
+  margin: 0;
+  font-family: Arial;
+}
 
-<ul id="id01">
-  <li>Oslo</li>
-  <li>Stockholm</li>
-  <li>Helsinki</li>
-  <li>Berlin</li>
-  <li>Rome</li>
-  <li>Madrid</li>
-</ul>
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
 
-<script>
-function sortList() {
-  var list, i, switching, b, shouldSwitch;
-  list = document.getElementById("id01");
-  switching = true;
-  /*Make a loop that will continue until
-  no switching has been done:*/
-  while (switching) {
-    //start by saying: no switching is done:
-    switching = false;
-    b = list.getElementsByTagName("LI");
-    //Loop through all list-items:
-    for (i = 0; i < (b.length - 1); i++) {
-      //start by saying there should be no switching:
-      shouldSwitch = false;
-      /*check if the next item should
-      switch place with the current item:*/
-      if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
-        /*if next item is alphabetically
-        lower than current item, mark as a switch
-        and break the loop:*/
-        shouldSwitch= true;
-        break;
-      }
-    }
-    if (shouldSwitch) {
-      /*If a switch has been marked, make the switch
-      and mark the switch as done:*/
-      b[i].parentNode.insertBefore(b[i + 1], b[i]);
-      switching = true;
-    }
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type=text]{
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;  
   }
 }
-</script>
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <div class="search-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div>
+
+<div style="padding-left:16px">
+  <h2>Responsive Search Bar</h2>
+  <p>Navigation bar with a search box and a submit button inside of it.</p>
+  <p>Resize the browser window to see the responsive effect.</p>
+</div>
 
 </body>
 </html>
